@@ -1,4 +1,3 @@
-import java.awt.geom.FlatteningPathIterator;
 import java.util.Scanner;
 
 public class Main {
@@ -12,28 +11,28 @@ public class Main {
 		String move = "";
 		int round = 1;
 		String player = "";
-		int playerZahl = 1;
+		int playerCount = 1;
 		System.out.println("\""+fen+" r\"");
 		while (running) {
 			System.out.println("Round : " +round );
 			
 				if(player.equals("")) {
-					System.out.println("Startspieler :haskell oder :ruby press enter to finish");
+					System.out.println("startplayer :haskell oder :ruby press enter to finish");
 					player= scan.nextLine();
 				}
 				if(!player.equals("")) {
 				System.out.println("Input Move for "+player);
 				move= scan.nextLine();
 				
-				if(playerZahl == 1) {
+				if(playerCount == 1) {
 					if(player.equals("ruby")) System.out.print("getMove ");
 					System.out.println("\""+asFenNot(applyMove(splittedFen, move))+" b\"");
-					playerZahl = 2;
+					playerCount = 2;
 				}
-				else if(playerZahl == 2) {
+				else if(playerCount == 2) {
 					if(player.equals("ruby")) System.out.print("getMove ");
 					System.out.println("\""+asFenNot(applyMove(splittedFen, move))+" r\"");
-					playerZahl = 1 ;
+					playerCount = 1 ;
 				}
 				if(player.equals("haskell")) {
 					player = "ruby";
@@ -101,27 +100,27 @@ public class Main {
 	}
 	
 	public static int toIndexNumber(String[] inputPos) {
-		String buchstabe = inputPos[0];
-		String zahl = inputPos[1];
+		String chara = inputPos[0];
+		String number = inputPos[1];
 		
-		int spalte	= 0;
-		int reihe   = 6-Integer.parseInt(zahl);
-		switch (buchstabe ) {
-		case "a": spalte	= 1 ;
+		int column	= 0;
+		int row   = 6-Integer.parseInt(number);
+		switch (chara ) {
+		case "a": column	= 1 ;
 		break;
-		case "b": spalte	= 2 ;
+		case "b": column	= 2 ;
 		break;
-		case "c": spalte	= 3 ;
+		case "c": column	= 3 ;
 		break;
-		case "d": spalte	= 4 ;
+		case "d": column	= 4 ;
 		break;
-		case "e": spalte	= 5 ;
+		case "e": column	= 5 ;
 		break;
-		case "f": spalte	= 6 ;
+		case "f": column	= 6 ;
 		break;
 		
 		}
 		
-		return spalte+reihe*6;
+		return column+row*6;
 	}
 }
